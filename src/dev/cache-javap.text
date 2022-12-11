@@ -1,0 +1,127 @@
+Compiled from "Cache.java"
+public class dev.Cache {
+  public dev.Cache();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: ldc           #7                  // int 2097152
+       7: putfield      #8                  // Field ARR_SIZE:I
+      10: aload_0
+      11: ldc           #7                  // int 2097152
+      13: newarray       int
+      15: putfield      #14                 // Field testData:[I
+      18: return
+
+  public void run();
+    Code:
+       0: getstatic     #18                 // Field java/lang/System.out:Ljava/io/PrintStream;
+       3: invokestatic  #24                 // Method java/lang/System.currentTimeMillis:()J
+       6: invokedynamic #28,  0             // InvokeDynamic #0:makeConcatWithConstants:(J)Ljava/lang/String;
+      11: invokevirtual #32                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      14: iconst_0
+      15: istore_1
+      16: iload_1
+      17: i2l
+      18: ldc2_w        #38                 // long 15000l
+      21: lcmp
+      22: ifge          39
+      25: aload_0
+      26: invokevirtual #40                 // Method touchEveryLine:()V
+      29: aload_0
+      30: invokevirtual #43                 // Method touchEveryItem:()V
+      33: iinc          1, 1
+      36: goto          16
+      39: getstatic     #18                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      42: invokestatic  #24                 // Method java/lang/System.currentTimeMillis:()J
+      45: invokedynamic #46,  0             // InvokeDynamic #1:makeConcatWithConstants:(J)Ljava/lang/String;
+      50: invokevirtual #32                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      53: getstatic     #18                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      56: ldc           #47                 // String item line
+      58: invokevirtual #32                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      61: iconst_0
+      62: istore_1
+      63: iload_1
+      64: bipush        100
+      66: if_icmpge     143
+      69: invokestatic  #49                 // Method java/lang/System.nanoTime:()J
+      72: lstore_2
+      73: aload_0
+      74: invokevirtual #40                 // Method touchEveryLine:()V
+      77: invokestatic  #49                 // Method java/lang/System.nanoTime:()J
+      80: lstore        4
+      82: aload_0
+      83: invokevirtual #43                 // Method touchEveryItem:()V
+      86: invokestatic  #49                 // Method java/lang/System.nanoTime:()J
+      89: lstore        6
+      91: lload         6
+      93: lload         4
+      95: lsub
+      96: lstore        8
+      98: lload         4
+     100: lload_2
+     101: lsub
+     102: lstore        10
+     104: lload         8
+     106: lload         10
+     108: lsub
+     109: l2d
+     110: dstore        12
+     112: getstatic     #18                 // Field java/lang/System.out:Ljava/io/PrintStream;
+     115: lload         8
+     117: lload         10
+     119: ldc2_w        #52                 // double 100.0d
+     122: dload         12
+     124: dmul
+     125: lload         10
+     127: l2d
+     128: ddiv
+     129: invokedynamic #54,  0             // InvokeDynamic #2:makeConcatWithConstants:(JJD)Ljava/lang/String;
+     134: invokevirtual #32                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     137: iinc          1, 1
+     140: goto          63
+     143: return
+
+  public void touchEveryLine();
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: iload_1
+       3: aload_0
+       4: getfield      #14                 // Field testData:[I
+       7: arraylength
+       8: if_icmpge     27
+      11: aload_0
+      12: getfield      #14                 // Field testData:[I
+      15: iload_1
+      16: dup2
+      17: iaload
+      18: iconst_1
+      19: iadd
+      20: iastore
+      // this is where it affects speed, incrementing index
+      21: iinc          1, 64
+      24: goto          2
+      27: return
+
+  public void touchEveryItem();
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: iload_1
+       3: aload_0
+       4: getfield      #14                 // Field testData:[I
+       7: arraylength
+       8: if_icmpge     27
+      11: aload_0
+      12: getfield      #14                 // Field testData:[I
+      15: iload_1
+      16: dup2
+      17: iaload
+      18: iconst_1
+      19: iadd
+      20: iastore
+      21: iinc          1, 1
+      24: goto          2
+      27: return
+}

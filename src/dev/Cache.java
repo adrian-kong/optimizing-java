@@ -15,12 +15,6 @@ package dev;
  * updating every element in array vs skipping
  */
 public class Cache {
-
-    public static void main(String[] args) {
-        Cache c = new Cache();
-        c.run();
-    }
-
     private final int ARR_SIZE = 2 * 1024 * 1024;
     private final int[] testData = new int[ARR_SIZE];
 
@@ -38,8 +32,8 @@ public class Cache {
             long t1 = System.nanoTime();
             touchEveryItem();
             long t2 = System.nanoTime();
-            long elItem = t2 - t1;
             long elLine = t1 - t0;
+            long elItem = t2 - t1;
             double diff = elItem - elLine;
             System.out.println(elItem + " " + elLine + " " + (100 * diff / elLine));
         }
@@ -50,7 +44,7 @@ public class Cache {
         // < 16 is significantly slower than iterating element by element
         // {1, 16} is approximately equivalent.
         // > 16 is significantly faster than iterating element by element
-        for (int i = 0; i < testData.length; i += 64) {
+        for (int i = 0; i < testData.length; i += 2) {
             testData[i]++;
         }
     }
