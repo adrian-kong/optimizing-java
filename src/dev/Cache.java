@@ -22,7 +22,7 @@ public class Cache {
         System.out.println("START:" + System.currentTimeMillis());
         for (int i = 0; i < 15_000L; i++) {
             touchEveryLine();
-            touchEveryItem();
+//            touchEveryItem();
         }
         System.out.println("WARMUP FINISHED:" + System.currentTimeMillis());
         System.out.println("item line");
@@ -30,12 +30,13 @@ public class Cache {
             long t0 = System.nanoTime();
             touchEveryLine();
             long t1 = System.nanoTime();
-            touchEveryItem();
-            long t2 = System.nanoTime();
-            long elLine = t1 - t0;
-            long elItem = t2 - t1;
-            double diff = elItem - elLine;
-            System.out.println(elItem + " " + elLine + " " + (100 * diff / elLine));
+            System.out.println(t1 - t0);
+//            touchEveryItem();
+//            long t2 = System.nanoTime();
+//            long elLine = t1 - t0;
+//            long elItem = t2 - t1;
+//            double diff = elItem - elLine;
+//            System.out.println(elItem + " " + elLine + " " + (100 * diff / elLine));
         }
     }
 
@@ -44,7 +45,7 @@ public class Cache {
         // < 16 is significantly slower than iterating element by element
         // {1, 16} is approximately equivalent.
         // > 16 is significantly faster than iterating element by element
-        for (int i = 0; i < testData.length; i += 2) {
+        for (int i = 0; i < testData.length; i += 16) {
             testData[i]++;
         }
     }
