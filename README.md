@@ -1,14 +1,12 @@
 # Optimizing Java
 
-Doing a little myth busting .
-
-refer to [O'Reily "Optimizing Java"](https://github.com/kittylyst/optimizing-java) GitHub code by Ben Evans
+Doing a little myth busting, refer to book / code [O'Reily "Optimizing Java"](https://github.com/kittylyst/optimizing-java)
 
 
 Java
 ```
 step 1:  avg time 100738 ns  (0.101 ms)
-step 2:  avg time 258189 ns  (0.258 ms)
+step 2:  avg time 258189 ns  (0.258 ms) // why does this happen... anything in between turns out to be slower (?)
 step 16: avg time 96517 ns   (0.097 ms)
 ```
 

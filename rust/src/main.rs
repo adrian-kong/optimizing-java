@@ -31,12 +31,12 @@ fn touch_line(array: &mut [u32]) {
 fn main() -> Result<(), Box<dyn Error>> {
     // warmup
     let mut array = vec![0_u32; SIZE].into_boxed_slice();
-    let start = SystemTime::now().duration_since(UNIX_EPOCH)?.as_nanos();
+    let start = SystemTime::now().duration_since(UNIX_EPOCH)?.as_millis();
     println!("START: {start}");
     for _ in 0..15_000 {
         touch_line(&mut array);
     }
-    let time_elapsed = SystemTime::now().duration_since(UNIX_EPOCH)?.as_nanos() - start;
+    let time_elapsed = SystemTime::now().duration_since(UNIX_EPOCH)?.as_millis() - start;
     println!("WARMUP FINISHED: {time_elapsed}");
     for _ in 0..100 {
         let start = SystemTime::now().duration_since(UNIX_EPOCH)?;

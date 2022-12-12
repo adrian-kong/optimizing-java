@@ -45,7 +45,7 @@ public class Cache {
         // < 16 is significantly slower than iterating element by element
         // {1, 16} is approximately equivalent.
         // > 16 is significantly faster than iterating element by element
-        for (int i = 0; i < testData.length; i += 16) {
+        for (int i = 0; i < testData.length; i += 5) {
             testData[i]++;
         }
     }
